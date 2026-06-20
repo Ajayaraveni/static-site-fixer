@@ -2,9 +2,9 @@ import { Reveal, SectionLabel } from "./Reveal";
 import about from "@/assets/about.jpg";
 
 const stats = [
-  { v: "45+", l: "Years of Legacy" },
+  { v: "49+", l: "Years of Legacy" },
   { v: "5000+", l: "Weddings Captured" },
-  { v: "3", l: "Cities Served" },
+  { v: "4", l: "Cities Served" },
   { v: "100%", l: "Trusted by Families" },
 ];
 
@@ -24,7 +24,7 @@ export function About() {
               className="relative rounded-sm w-full aspect-square object-cover"
             />
             <div className="absolute -bottom-8 -right-8 bg-background border border-gold/40 px-8 py-6 rounded-sm hidden md:block">
-              <div className="font-serif text-5xl text-gradient-gold">1978</div>
+              <div className="font-serif text-5xl text-gradient-gold">1976</div>
               <div className="text-xs tracking-[0.25em] text-muted-foreground uppercase mt-1">
                 Our Beginning
               </div>
@@ -38,21 +38,21 @@ export function About() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight">
-              Four decades of <span className="italic text-gradient-gold">craft,</span>
+              Nearly five decades of <span className="italic text-gradient-gold">craft,</span>
               <br /> emotion & legacy.
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
             <div className="mt-8 space-y-5 text-muted-foreground leading-relaxed">
               <p>
-                Founded in 1978 on Cinema Road, Adilabad, Hanuman Colour Lab & Studios began
-                as a small portrait studio with a single ambition — to honour every face,
-                every smile, every moment with the dignity of true craft.
+                Founded in 1976, Hanuman Digitals began as a small portrait studio with a
+                single ambition — to honour every face, every smile, every moment with the
+                dignity of true craft.
               </p>
               <p>
-                Three generations later, we remain a family-run house of imagery. From
-                traditional ceremonies in Adilabad to cinematic pre-wedding films across
-                Telangana, we blend old-world reverence with modern artistry.
+                Today, with studios across Hyderabad, Adilabad, Nirmal and Nizamabad, we
+                remain a family-run house of imagery — blending old-world reverence with
+                modern cinematic artistry.
               </p>
             </div>
           </Reveal>

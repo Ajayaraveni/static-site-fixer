@@ -1,18 +1,18 @@
 import { Reveal, SectionLabel } from "./Reveal";
 import {
-  Heart, Film, Camera, Diamond, Users, User, Calendar, BookOpen, Printer,
+  Heart, Film, Camera, User, BookOpen, Baby, Cake, Briefcase, Sparkles,
 } from "lucide-react";
 
 const services = [
   { icon: Heart, t: "Wedding Photography", d: "Timeless storytelling of every ritual, glance and embrace." },
-  { icon: Film, t: "Cinematic Wedding Films", d: "Hollywood-grade films edited with score and soul." },
+  { icon: Film, t: "Wedding Cinematography", d: "Hollywood-grade films edited with score and soul." },
   { icon: Camera, t: "Pre-Wedding Shoots", d: "Romantic narratives in dreamlike locations." },
-  { icon: Diamond, t: "Engagement Photography", d: "Capturing the spark of the very first promise." },
-  { icon: Users, t: "Couple Shoots", d: "Editorial portraits made to be framed forever." },
   { icon: User, t: "Portrait Photography", d: "Studio and outdoor portraits with refined lighting." },
-  { icon: Calendar, t: "Event Coverage", d: "Birthdays, ceremonies and family celebrations." },
-  { icon: BookOpen, t: "Album Designing", d: "Hand-crafted heirloom albums in luxury finishes." },
-  { icon: Printer, t: "Digital Printing", d: "Archival-quality prints from our in-house lab." },
+  { icon: BookOpen, t: "Album Design", d: "Hand-crafted heirloom albums in luxury finishes." },
+  { icon: Sparkles, t: "Maternity Shoots", d: "Soft, intimate portraits celebrating motherhood." },
+  { icon: Baby, t: "Baby Shoots", d: "Gentle, themed sessions capturing first wonders." },
+  { icon: Cake, t: "Birthday Events", d: "Joyful candid coverage of every milestone." },
+  { icon: Briefcase, t: "Corporate Events", d: "Polished documentation of conferences and brand moments." },
 ];
 
 export function Services() {

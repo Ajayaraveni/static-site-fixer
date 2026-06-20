@@ -11,19 +11,41 @@ import g6 from "@/assets/g6.jpg";
 import g7 from "@/assets/g7.jpg";
 import g8 from "@/assets/g8.jpg";
 
-type Cat = "All" | "Weddings" | "Pre-Wedding" | "Portraits" | "Events";
+type Cat =
+  | "All"
+  | "Wedding Photography"
+  | "Wedding Cinematography"
+  | "Pre-Wedding"
+  | "Portrait Photography"
+  | "Album Design";
+
+/**
+ * Portfolio items.
+ *
+ * To later wire up real galleries: replace this array with imports from
+ * category-specific folders (e.g. `src/assets/portfolio/wedding/*`) or fetch
+ * a manifest at runtime. The shape `{ src, cat, h, alt }` should stay the
+ * same so the rest of the component keeps working.
+ */
 const items = [
-  { src: g1, cat: "Weddings", h: "row-span-2", alt: "Bridal portrait at reception" },
+  { src: g1, cat: "Wedding Photography", h: "row-span-2", alt: "Bridal portrait at reception" },
   { src: g2, cat: "Pre-Wedding", h: "", alt: "Misty mountain pre-wedding" },
-  { src: g3, cat: "Portraits", h: "row-span-2", alt: "Bride portrait" },
-  { src: g4, cat: "Weddings", h: "", alt: "Wedding ring exchange" },
-  { src: g5, cat: "Portraits", h: "", alt: "Groom portrait in sherwani" },
+  { src: g3, cat: "Portrait Photography", h: "row-span-2", alt: "Bride portrait" },
+  { src: g4, cat: "Wedding Cinematography", h: "", alt: "Wedding ring exchange" },
+  { src: g5, cat: "Portrait Photography", h: "", alt: "Groom portrait in sherwani" },
   { src: g6, cat: "Pre-Wedding", h: "", alt: "Engagement ring close-up" },
-  { src: g7, cat: "Events", h: "row-span-2", alt: "Reception dance" },
-  { src: g8, cat: "Events", h: "", alt: "Haldi ceremony" },
+  { src: g7, cat: "Album Design", h: "row-span-2", alt: "Luxury wedding album spread" },
+  { src: g8, cat: "Wedding Photography", h: "", alt: "Haldi ceremony" },
 ] as const;
 
-const cats: Cat[] = ["All", "Weddings", "Pre-Wedding", "Portraits", "Events"];
+const cats: Cat[] = [
+  "All",
+  "Wedding Photography",
+  "Wedding Cinematography",
+  "Pre-Wedding",
+  "Portrait Photography",
+  "Album Design",
+];
 
 export function Portfolio() {
   const [active, setActive] = useState<Cat>("All");
@@ -48,7 +70,7 @@ export function Portfolio() {
               <button
                 key={c}
                 onClick={() => setActive(c)}
-                className={`px-6 py-2 text-xs tracking-[0.25em] uppercase rounded-full border transition-all ${
+                className={`px-5 py-2 text-[11px] tracking-[0.25em] uppercase rounded-full border transition-all ${
                   active === c
                     ? "border-gold bg-gold/10 text-gold"
                     : "border-border text-muted-foreground hover:border-gold/50 hover:text-foreground"
