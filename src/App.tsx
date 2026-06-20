@@ -3,6 +3,8 @@ import { Hero } from "@/components/site/Hero";
 import { About } from "@/components/site/About";
 import { Services } from "@/components/site/Services";
 import { Portfolio } from "@/components/site/Portfolio";
+import { Films } from "@/components/site/Films";
+import { Locations } from "@/components/site/Locations";
 import { WhyUs } from "@/components/site/WhyUs";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Contact } from "@/components/site/Contact";
@@ -17,6 +19,8 @@ export default function App() {
       <About />
       <Services />
       <Portfolio />
+      <Films />
+      <Locations />
       <WhyUs />
       <Testimonials />
       <Contact />

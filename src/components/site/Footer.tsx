@@ -1,4 +1,4 @@
-import { Camera, Instagram, Facebook, Youtube } from "lucide-react";
+import { Camera, Instagram, Youtube } from "lucide-react";
 
 export function Footer() {
   return (
@@ -10,19 +10,19 @@ export function Footer() {
               <Camera className="w-5 h-5 text-gold" />
             </div>
             <div className="leading-tight">
-              <div className="font-serif text-lg">Hanuman Studios</div>
-              <div className="text-[10px] tracking-[0.25em] text-gold uppercase">Since 1978</div>
+              <div className="font-serif text-lg">Hanuman Digitals</div>
+              <div className="text-[10px] tracking-[0.25em] text-gold uppercase">Since 1976</div>
             </div>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Capturing timeless memories across Telangana for over four decades.
+            Frames That Speak — capturing timeless memories across Telangana for nearly five decades.
           </p>
         </div>
 
         <div>
           <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-5">Quick Links</h4>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            {["About", "Services", "Portfolio", "Testimonials", "Contact"].map((l) => (
+            {["About", "Services", "Portfolio", "Films", "Locations", "Testimonials", "Contact"].map((l) => (
               <li key={l}>
                 <a href={`#${l.toLowerCase()}`} className="hover:text-gold transition-colors">{l}</a>
               </li>
@@ -33,7 +33,7 @@ export function Footer() {
         <div>
           <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-5">Services</h4>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            {["Wedding Photography", "Cinematic Films", "Pre-Wedding", "Albums", "Digital Printing"].map((l) => (
+            {["Wedding Photography", "Wedding Cinematography", "Pre-Wedding", "Portraits", "Album Design", "Baby & Maternity", "Corporate Events"].map((l) => (
               <li key={l}>{l}</li>
             ))}
           </ul>
@@ -42,23 +42,25 @@ export function Footer() {
         <div>
           <h4 className="text-xs tracking-[0.3em] uppercase text-gold mb-5">Contact</h4>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            <li>Cinema Road, Adilabad</li>
-            <li>Telangana 504001</li>
-            <li><a href="tel:+919849594302" className="hover:text-gold transition-colors">+91 98495 94302</a></li>
+            <li>Hyderabad · Adilabad</li>
+            <li>Nirmal · Nizamabad</li>
+            <li><a href="tel:+918885526529" className="hover:text-gold transition-colors">+91 88855 26529</a></li>
+            <li><a href="mailto:sanjayuttoor07@gmail.com" className="hover:text-gold transition-colors">sanjayuttoor07@gmail.com</a></li>
           </ul>
           <div className="flex gap-3 mt-6">
-            {[Instagram, Facebook, Youtube].map((Icon, i) => (
-              <a key={i} href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-gold hover:text-gold transition-all">
-                <Icon className="w-4 h-4" />
-              </a>
-            ))}
+            <a href="https://www.instagram.com/hanuman_digitals/" target="_blank" rel="noopener" aria-label="Instagram" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-gold hover:text-gold transition-all">
+              <Instagram className="w-4 h-4" />
+            </a>
+            <a href="https://www.youtube.com/@hanumandigitals1" target="_blank" rel="noopener" aria-label="YouTube" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:border-gold hover:text-gold transition-all">
+              <Youtube className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </div>
 
       <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between gap-4 text-xs text-muted-foreground">
-        <div>© {new Date().getFullYear()} Hanuman Colour Lab & Studios. All rights reserved.</div>
-        <div className="tracking-[0.2em] uppercase text-gold/70">Crafted with love · Since 1978</div>
+        <div>© {new Date().getFullYear()} Hanuman Digitals. All rights reserved.</div>
+        <div className="tracking-[0.2em] uppercase text-gold/70">Frames That Speak · Since 1976</div>
       </div>
     </footer>
   );

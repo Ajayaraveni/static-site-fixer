@@ -6,6 +6,8 @@ const links = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Portfolio", href: "#portfolio" },
+  { label: "Films", href: "#films" },
+  { label: "Locations", href: "#locations" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
@@ -38,12 +40,12 @@ export function Nav() {
             <Camera className="w-5 h-5 text-gold" />
           </div>
           <div className="leading-tight">
-            <div className="font-serif text-lg text-foreground">Hanuman Studios</div>
-            <div className="text-[10px] tracking-[0.25em] text-gold uppercase">Since 1978</div>
+            <div className="font-serif text-lg text-foreground">Hanuman Digitals</div>
+            <div className="text-[10px] tracking-[0.25em] text-gold uppercase">Since 1976</div>
           </div>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-10">
+        <nav className="hidden lg:flex items-center gap-8">
           {links.map((l) => (
             <a
               key={l.href}

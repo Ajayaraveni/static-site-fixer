@@ -2,10 +2,10 @@ import { Reveal, SectionLabel } from "./Reveal";
 import { Award, Camera, Sparkles, Heart, Zap } from "lucide-react";
 
 const items = [
-  { icon: Award, t: "40+ Years Experience", d: "Three generations of trusted photographers." },
+  { icon: Award, t: "Since 1976", d: "Nearly five decades of trusted photography craft." },
   { icon: Camera, t: "Professional Equipment", d: "Full-frame cinema cameras, prime lenses, drones." },
-  { icon: Sparkles, t: "Premium Editing", d: "Color-graded by award-winning post-production team." },
-  { icon: Heart, t: "Trusted by Families", d: "5000+ weddings across three districts." },
+  { icon: Sparkles, t: "Premium Editing", d: "Color-graded by an award-winning post-production team." },
+  { icon: Heart, t: "Trusted by Families", d: "5000+ weddings across four cities of Telangana." },
   { icon: Zap, t: "Fast Delivery", d: "Highlight reels in 7 days, full albums in 30." },
 ];
 
