@@ -56,7 +56,7 @@ export function Locations() {
           </Reveal>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {locations.map((l, i) => (
             <Reveal key={l.city} delay={i * 0.08}>
               <div className="p-8 border border-border rounded-sm bg-card/40 h-full hover:border-gold/50 hover:bg-card transition-all duration-500 group relative overflow-hidden">
@@ -71,15 +71,25 @@ export function Locations() {
                 </div>
                 <a
                   href={`tel:${l.tel}`}
-                  className="flex gap-3 text-sm hover:text-gold transition-colors"
+                  className="flex gap-3 text-sm hover:text-gold transition-colors mb-2"
                 >
                   <Phone className="w-4 h-4 text-gold shrink-0 mt-0.5" />
                   <span>{l.phone}</span>
                 </a>
+                {l.email && (
+                  <a
+                    href={`mailto:${l.email}`}
+                    className="flex gap-3 text-sm hover:text-gold transition-colors break-all"
+                  >
+                    <Mail className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                    <span>{l.email}</span>
+                  </a>
+                )}
               </div>
             </Reveal>
           ))}
         </div>
+
       </div>
     </section>
   );
