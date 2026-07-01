@@ -3,18 +3,33 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Reveal, SectionLabel } from "./Reveal";
 import { Star, Quote, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 
-/**
- * Client testimonials.
- *
- * Real reviews will be added here once supplied by Hanuman Digitals.
- * Each entry shape: { n: "Client name", l: "City", t: "Testimonial text" }
- *
- * Until the list is populated, an empty-state card is rendered with a CTA
- * to share an experience — so the section remains production-ready without
- * shipping any placeholder content.
- */
-type Review = { n: string; l: string; t: string };
-const reviews: Review[] = [];
+type Review = { n: string; l?: string; t: string };
+const reviews: Review[] = [
+  {
+    n: "Rahul & Sneha",
+    t: "Hanuman Digitals beautifully captured every emotion of our wedding. The photos and cinematic film exceeded our expectations.",
+  },
+  {
+    n: "Kiran Kumar",
+    t: "Our pre-wedding shoot was creative, fun, and professionally managed. Every frame tells a story.",
+  },
+  {
+    n: "Anusha Reddy",
+    t: "The entire team was incredibly patient and delivered stunning portraits. We couldn't be happier.",
+  },
+  {
+    n: "Praveen & Meghana",
+    t: "From photography to album design, everything was delivered with exceptional quality and attention to detail.",
+  },
+  {
+    n: "Srinivas Family",
+    t: "They captured our baby's first birthday perfectly. Every special moment was preserved beautifully.",
+  },
+  {
+    n: "Corporate Event Client",
+    t: "Professional team, excellent coordination, and outstanding event coverage. Highly recommended.",
+  },
+];
 
 function useVisibleCount() {
   const [n, setN] = useState(3);
