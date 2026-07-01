@@ -32,7 +32,7 @@ export function Portfolio() {
   const [imagesByCat, setImagesByCat] = useState<Record<string, DriveImage[]>>({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [lightbox, setLightbox] = useState<string | null>(null);
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
 
   // Load categories once
   useEffect(() => {
