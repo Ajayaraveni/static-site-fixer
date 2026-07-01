@@ -76,6 +76,28 @@ export function Portfolio() {
   }, [active, imagesByCat]);
 
   const images = active ? imagesByCat[active.id] ?? [] : [];
+  const visibleImages = images.slice(0, 8);
+
+  const closeLightbox = useCallback(() => setLightboxIdx(null), []);
+  const nextImage = useCallback(
+    () => setLightboxIdx((i) => (i === null ? i : (i + 1) % images.length)),
+    [images.length],
+  );
+  const prevImage = useCallback(
+    () => setLightboxIdx((i) => (i === null ? i : (i - 1 + images.length) % images.length)),
+    [images.length],
+  );
+
+  useEffect(() => {
+    if (lightboxIdx === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowRight") nextImage();
+      else if (e.key === "ArrowLeft") prevImage();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxIdx, closeLightbox, nextImage, prevImage]);
 
   return (
     <section id="portfolio" className="py-28 md:py-40 px-6">
