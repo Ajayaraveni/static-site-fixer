@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Loader2 } from "lucide-react";
+import { X, Loader2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal, SectionLabel } from "./Reveal";
 
 type Category = { id: string; name: string };
