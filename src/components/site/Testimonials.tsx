@@ -32,11 +32,10 @@ const reviews: Review[] = [
 ];
 
 function useVisibleCount() {
-  const [n, setN] = useState(3);
+  const [n, setN] = useState(2);
   useEffect(() => {
     const update = () => {
-      const w = window.innerWidth;
-      setN(w >= 1024 ? 3 : w >= 640 ? 2 : 1);
+      setN(window.innerWidth >= 768 ? 2 : 1);
     };
     update();
     window.addEventListener("resize", update);
