@@ -103,9 +103,11 @@ export function Testimonials() {
                     </p>
                     <div className="pt-6 border-t border-border">
                       <div className="font-serif text-lg text-gold">{r.n}</div>
-                      <div className="text-xs tracking-[0.25em] uppercase text-muted-foreground mt-1">
-                        {r.l}
-                      </div>
+                      {r.l && (
+                        <div className="text-xs tracking-[0.25em] uppercase text-muted-foreground mt-1">
+                          {r.l}
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 ))}
