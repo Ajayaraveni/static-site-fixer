@@ -4,7 +4,7 @@ import about from "@/assets/about.jpg";
 const stats = [
   { v: "49+", l: "Years of Legacy" },
   { v: "5000+", l: "Weddings Captured" },
-  { v: "4", l: "Cities Served" },
+  { v: "5", l: "Cities Served" },
   { v: "100%", l: "Trusted by Families" },
 ];
 
@@ -50,9 +50,9 @@ export function About() {
                 dignity of true craft.
               </p>
               <p>
-                Today, with studios across Hyderabad, Adilabad, Nirmal and Nizamabad, we
-                remain a family-run house of imagery — blending old-world reverence with
-                modern cinematic artistry.
+                Today, with five studios across Hyderabad, Adilabad, Nirmal, Nizamabad and
+                Princeton, Texas (USA), we remain a family-run house of imagery — blending
+                old-world reverence with modern cinematic artistry.
               </p>
             </div>
           </Reveal>

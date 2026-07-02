@@ -45,7 +45,7 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.7 }}
           className="mt-8 max-w-2xl text-base md:text-lg text-muted-foreground leading-relaxed"
         >
-          Premium wedding photography, cinematography & studio craft across Telangana —
+          Premium wedding photography, cinematography & studio craft across India & the USA —
           honouring nearly five decades of storytelling.
         </motion.p>
 
@@ -78,7 +78,7 @@ export function Hero() {
           {[
             { v: "49+", l: "Years of Craft" },
             { v: "5000+", l: "Weddings Captured" },
-            { v: "4", l: "Studio Locations" },
+            { v: "5", l: "Studio Locations" },
           ].map((s) => (
             <div key={s.l} className="text-center">
               <div className="font-serif text-3xl md:text-4xl text-gradient-gold">{s.v}</div>

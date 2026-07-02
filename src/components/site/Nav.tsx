@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Camera } from "lucide-react";
+import { Menu, X, Instagram, Youtube } from "lucide-react";
+import logoAsset from "@/assets/hanuman-logo.png.asset.json";
 
 const links = [
   { label: "About", href: "#about" },
@@ -10,6 +11,19 @@ const links = [
   { label: "Locations", href: "#locations" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
+];
+
+const socials = [
+  {
+    href: "https://www.instagram.com/hanuman_digitals/",
+    label: "Instagram",
+    Icon: Instagram,
+  },
+  {
+    href: "https://www.youtube.com/@hanumandigitals1",
+    label: "YouTube",
+    Icon: Youtube,
+  },
 ];
 
 export function Nav() {
@@ -30,19 +44,23 @@ export function Nav() {
       transition={{ duration: 0.7, ease: "easeOut" }}
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/85 backdrop-blur-xl border-b border-border py-3"
-          : "bg-transparent py-5"
+          ? "bg-background/85 backdrop-blur-xl border-b border-border py-2"
+          : "bg-transparent py-3"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full border border-gold/40 flex items-center justify-center group-hover:border-gold transition-colors">
-            <Camera className="w-5 h-5 text-gold" />
-          </div>
-          <div className="leading-tight">
-            <div className="font-serif text-lg text-foreground">Hanuman Digitals</div>
-            <div className="text-[10px] tracking-[0.25em] text-gold uppercase">Since 1976</div>
-          </div>
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between gap-6">
+        <a
+          href="#top"
+          aria-label="Hanuman Digitals — Home"
+          className="flex items-center group shrink-0"
+        >
+          <img
+            src={logoAsset.url}
+            alt="Hanuman Digitals — Frames That Speak"
+            className="h-12 md:h-14 w-auto object-contain select-none transition-transform duration-500 group-hover:scale-[1.02]"
+            style={{ mixBlendMode: "screen" }}
+            draggable={false}
+          />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
@@ -58,12 +76,20 @@ export function Nav() {
           ))}
         </nav>
 
-        <a
-          href="#contact"
-          className="hidden lg:inline-flex btn-gold btn-gold-hover px-6 py-2.5 rounded-full text-sm"
-        >
-          Book Now
-        </a>
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
+          {socials.map(({ href, label, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center text-muted-foreground hover:text-gold hover:border-gold hover:bg-gold/5 transition-all duration-300"
+            >
+              <Icon className="w-4 h-4" strokeWidth={1.5} />
+            </a>
+          ))}
+        </div>
 
         <button
           onClick={() => setOpen(!open)}
@@ -93,13 +119,20 @@ export function Nav() {
                   {l.label}
                 </a>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
-                className="btn-gold btn-gold-hover px-6 py-3 rounded-full text-center mt-2"
-              >
-                Book Now
-              </a>
+              <div className="flex items-center gap-3 pt-4 border-t border-border">
+                {socials.map(({ href, label, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-11 h-11 rounded-full border border-gold/30 flex items-center justify-center text-muted-foreground hover:text-gold hover:border-gold transition-all"
+                  >
+                    <Icon className="w-4 h-4" strokeWidth={1.5} />
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}

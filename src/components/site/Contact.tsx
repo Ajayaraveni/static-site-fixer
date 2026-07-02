@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Reveal, SectionLabel } from "./Reveal";
 import {
-  MapPin, Phone, Mail, MessageCircle, ArrowRight, Instagram, Youtube,
+  MapPin, Phone, Mail, MessageCircle, ArrowRight, Instagram, Youtube, Loader2,
 } from "lucide-react";
 
 const SERVICES = [
@@ -21,43 +22,39 @@ const SERVICE_CITIES = [
   { city: "Adilabad", note: "Studio · Cinema Road" },
   { city: "Nirmal", note: "Studio · Narayan Reddy Market" },
   { city: "Nizamabad", note: "Studio · Beside Bus Stand" },
+  { city: "Princeton, TX · USA", note: "Sowmya's Photography" },
 ];
 
-/**
- * Enquiry form.
- *
- * Submissions are delivered to sanjayuttoor07@gmail.com via a `mailto:` draft —
- * this keeps the site fully static (Cloudflare Pages friendly) and avoids any
- * server dependency. When a backend is added (Lovable Cloud / Formspree / etc.)
- * swap the `mailto:` handler for a `fetch` POST without touching the markup.
- */
 const TO_EMAIL = "sanjayuttoor07@gmail.com";
 
+const EMAILJS_SERVICE_ID = "service_7ybqgwd";
+const EMAILJS_TEMPLATE_ID = "template_6q372l7";
+const EMAILJS_PUBLIC_KEY = "e1sYE-k0RiIv1g_oM";
+
+type Status = "idle" | "sending" | "success" | "error";
+
 export function Contact() {
-  const [sent, setSent] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<Status>("idle");
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const f = e.currentTarget;
-    const data = new FormData(f);
-    const get = (k: string) => String(data.get(k) ?? "").trim();
+    if (status === "sending") return;
+    setStatus("sending");
 
-    const subject = `New Enquiry — ${get("service") || "Photography"} — ${get("name")}`;
-    const body =
-      `Name: ${get("name")}\n` +
-      `Phone: ${get("phone")}\n` +
-      `Email: ${get("email")}\n` +
-      `Event Date: ${get("date")}\n` +
-      `Event Location: ${get("location")}\n` +
-      `Service Required: ${get("service")}\n\n` +
-      `Message:\n${get("message")}\n`;
-
-    window.location.href =
-      `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    setSent(true);
-    f.reset();
-    setTimeout(() => setSent(false), 6000);
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        e.currentTarget,
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
+      setStatus("success");
+      formRef.current?.reset();
+    } catch (err) {
+      console.error("EmailJS send failed", err);
+      setStatus("error");
+    }
   };
 
   return (
@@ -74,28 +71,45 @@ export function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           <Reveal>
-            <form onSubmit={onSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={onSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
-                <input name="name" required maxLength={100} placeholder="Your Name" className="bg-card border border-border focus:border-gold rounded-sm px-5 py-4 w-full outline-none transition-colors" />
+                <input name="from_name" required maxLength={100} placeholder="Your Name" className="bg-card border border-border focus:border-gold rounded-sm px-5 py-4 w-full outline-none transition-colors" />
                 <input name="phone" required type="tel" maxLength={20} placeholder="Phone Number" className="bg-card border border-border focus:border-gold rounded-sm px-5 py-4 w-full outline-none transition-colors" />
               </div>
-              <input name="email" required type="email" maxLength={255} placeholder="Email" className="bg-card border border-border focus:border-gold rounded-sm px-5 py-4 w-full outline-none transition-colors" />
+              <input name="reply_to" required type="email" maxLength={255} placeholder="Email" className="bg-card border border-border focus:border-gold rounded-sm px-5 py-4 w-full outline-none transition-colors" />
               <div className="grid sm:grid-cols-2 gap-6">
-                <input name="date" type="date" placeholder="Event Date" className="bg-card border border-border focus:border-gold rounded-sm px-5 py-4 w-full outline-none transition-colors text-muted-foreground" />
-                <input name="location" maxLength={120} placeholder="Event Location" className="bg-card border border-border focus:border-gold rounded-sm px-5 py-4 w-full outline-none transition-colors" />
+                <input name="event_date" type="date" placeholder="Event Date" className="bg-card border border-border focus:border-gold rounded-sm px-5 py-4 w-full outline-none transition-colors text-muted-foreground" />
+                <input name="event_location" maxLength={120} placeholder="Event Location" className="bg-card border border-border focus:border-gold rounded-sm px-5 py-4 w-full outline-none transition-colors" />
               </div>
               <select name="service" defaultValue="" required className="bg-card border border-border focus:border-gold rounded-sm px-5 py-4 w-full outline-none transition-colors text-muted-foreground">
                 <option value="" disabled>Service Required</option>
                 {SERVICES.map((s) => <option key={s}>{s}</option>)}
               </select>
               <textarea name="message" required maxLength={1000} placeholder="Tell us about your event..." rows={5} className="bg-card border border-border focus:border-gold rounded-sm px-5 py-4 w-full outline-none transition-colors resize-none" />
-              <button type="submit" className="btn-gold btn-gold-hover px-8 py-4 rounded-full inline-flex items-center gap-2 text-sm">
-                {sent ? "Thank you — your enquiry has been prepared. Please send the email to confirm." : <>Send Enquiry <ArrowRight className="w-4 h-4" /></>}
+
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="btn-gold btn-gold-hover px-8 py-4 rounded-full inline-flex items-center gap-2 text-sm disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {status === "sending" ? (
+                  <>Sending<Loader2 className="w-4 h-4 animate-spin" /></>
+                ) : (
+                  <>Send Enquiry <ArrowRight className="w-4 h-4" /></>
+                )}
               </button>
-              {sent && (
-                <p className="text-xs text-muted-foreground">
-                  Your default mail app should open with the details. If it didn't, write to{" "}
-                  <a href={`mailto:${TO_EMAIL}`} className="text-gold hover:underline">{TO_EMAIL}</a>.
+
+              {status === "success" && (
+                <p role="status" className="text-sm text-gold">
+                  Thank you! Your enquiry has been sent successfully. Our team will contact you shortly.
+                </p>
+              )}
+              {status === "error" && (
+                <p role="alert" className="text-sm text-destructive">
+                  We couldn't send your enquiry right now. Please try again or reach us on WhatsApp at{" "}
+                  <a href="https://wa.me/918885526529" target="_blank" rel="noopener" className="underline hover:text-gold">
+                    +91 88855 26529
+                  </a>.
                 </p>
               )}
             </form>
@@ -131,7 +145,7 @@ export function Contact() {
               </div>
 
               <div>
-                <div className="text-[11px] tracking-[0.3em] uppercase text-gold mb-4">Service Locations</div>
+                <div className="text-[11px] tracking-[0.3em] uppercase text-gold mb-4">5 Service Locations</div>
                 <div className="grid grid-cols-2 gap-3">
                   {SERVICE_CITIES.map((l) => (
                     <div

@@ -143,7 +143,7 @@ export function Testimonials() {
                 ))}
               </div>
               <h3 className="font-serif text-2xl md:text-3xl mb-4">
-                Trusted by 5000+ families across Telangana
+                Trusted by 5000+ families across India & the USA
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-8">
                 Verified client testimonials will appear here shortly. If we've captured your
