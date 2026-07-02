@@ -5,7 +5,7 @@ const items = [
   { icon: Award, t: "Since 1976", d: "Nearly five decades of trusted photography craft." },
   { icon: Camera, t: "Professional Equipment", d: "Full-frame cinema cameras, prime lenses, drones." },
   { icon: Sparkles, t: "Premium Editing", d: "Color-graded by an award-winning post-production team." },
-  { icon: Heart, t: "Trusted by Families", d: "5000+ weddings across four cities of Telangana." },
+  { icon: Heart, t: "Trusted by Families", d: "5000+ weddings across 5 studios in India & the USA." },
   { icon: Zap, t: "Fast Delivery", d: "Highlight reels in 7 days, full albums in 30." },
 ];
 

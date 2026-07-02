@@ -55,10 +55,10 @@ export function Locations() {
     <section id="locations" className="py-28 md:py-40 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <Reveal><SectionLabel>Our Studios</SectionLabel></Reveal>
+          <Reveal><SectionLabel>Our 5 Studios</SectionLabel></Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl">
-              Serving Across <span className="italic text-gradient-gold">Telangana</span>
+              Serving Across <span className="italic text-gradient-gold">India &amp; Beyond</span>
             </h2>
           </Reveal>
         </div>
